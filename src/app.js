@@ -17,12 +17,13 @@ app.get("/api/v1/products/:name/:price", (req, res) => {
     })
     if(searchedProduct){
        res.status(200).send({
+        "status": "success",
         "message": "Product fetched successfully",
-        "data": searchedProduct
+        data: searchedProduct
        });
     }
     else{
-        res.status(404).send({"message": "Product not found!"})
+        res.status(404).send({"status": "failed", "message": "Product not found!"})
     }
 })
 
