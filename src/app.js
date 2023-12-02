@@ -10,5 +10,20 @@ app.use(express.json());
 
 // Write GET endpoint for sending product to the client here
 // Endpoint - /api/v1/products/:name/:price
+app.get("/api/v1/products/:name/:price", (req, res) => {
+    const {name, price} = req.params;
+    const searchedProduct = products.find((product)=>{
+        return product.name.toLowerCase() === name.toLowerCase() && product.price === parseInt(price);
+    })
+    if(searchedProduct){
+       res.status(200).send({
+        "message": "Product fetched successfully",
+        "data": searchedProduct
+       });
+    }
+    else{
+        res.status(404).send({"message": "Product not found"})
+    }
+})
 
 module.exports = app;
