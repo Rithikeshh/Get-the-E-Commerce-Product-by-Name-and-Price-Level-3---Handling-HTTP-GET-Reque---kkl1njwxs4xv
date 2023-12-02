@@ -22,7 +22,7 @@ app.get("/api/v1/products/:name/:price", (req, res) => {
        });
     }
     else{
-        res.status(404).send({"message": "Product not found"})
+        res.status(404).send({"message": "Product not found!"})
     }
 })
 
