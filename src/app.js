@@ -12,6 +12,7 @@ app.use(express.json());
 // Endpoint - /api/v1/products/:name/:price
 app.get("/api/v1/products/:name/:price", (req, res) => {
     const {name, price} = req.params;
+    console.log(req.abc)
     const searchedProduct = products.find((product)=>{
         return product.name.toLowerCase() === name.toLowerCase() && product.price === parseInt(price);
     })
@@ -19,7 +20,7 @@ app.get("/api/v1/products/:name/:price", (req, res) => {
        res.status(200).send({
         "status": "success",
         "message": "Product fetched successfully",
-        data: searchedProduct
+        product: searchedProduct
        });
     }
     else{
