@@ -17,7 +17,11 @@ app.get("/api/v1/products/:name/:price", (req, res) => {
         return product.name.toLowerCase() === name.toLowerCase() && product.price === parseInt(price);
     })
     if(searchedProduct){
-       res.status(200).send(searchedProduct);
+       res.status(200).send({
+        "status": "success",
+        "message": "Product fetched successfully",
+        "data": searchedProduct
+       });
     }
     else{
         res.status(404).send({"status": "failed", "message": "Product not found!"})
