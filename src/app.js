@@ -20,7 +20,9 @@ app.get("/api/v1/products/:name/:price", (req, res) => {
        res.status(200).send({
         "status": "success",
         "message": "Product fetched successfully",
-        "productName": searchedProduct
+        "data":{
+            "product": searchedProduct
+        }
        });
     }
     else{
